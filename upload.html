@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upload — AMMIIN</title>
+  <meta name="description" content="Upload foto dan video kenangan AMMIIN." />
+  <meta name="robots" content="noindex" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/upload.css" />
+</head>
+<body>
+
+<div class="grain-overlay" aria-hidden="true"></div>
+
+<!-- ======= TOAST CONTAINER ======= -->
+<div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+<!-- ======= HEADER ======= -->
+<header class="upload-header">
+  <div class="upload-header-inner">
+    <span class="upload-brand">
+      AMMIIN <span class="upload-brand-tag">Upload</span>
+    </span>
+    <a href="index.html" class="back-link">← Kembali ke Home</a>
+  </div>
+</header>
+
+<!-- ======= MAIN PAGE ======= -->
+<div class="upload-page">
+  <div class="upload-container">
+
+    <!-- Hero Intro -->
+    <div class="upload-hero">
+      <p class="upload-hero-kicker">Panel Upload</p>
+      <h1 class="upload-hero-title">Tambahin Kenangan Baru</h1>
+      <p class="upload-hero-sub">Upload foto dan video tongkrongan AMMIIN. Semua konten langsung muncul di website — bisa dilakukan siapa saja, dari mana saja.</p>
+    </div>
+
+    <!-- Setup Banner (muncul kalau belum dikonfigurasi) -->
+    <div class="firebase-banner" id="firebaseBanner">
+      <p class="firebase-banner-title">⚙️ Konfigurasi Cloudinary & Firestore</p>
+      <p>Buka file <code>js/firebase-config.js</code> lalu masukkan <strong>Cloud Name</strong> dan <strong>Upload Preset</strong> dari Cloudinary.</p>
+      <p><strong>Langkah Cepat (100% Gratis Tanpa Kartu):</strong></p>
+      <p>1. <strong>Firestore:</strong> Di Firebase Console, klik <em>Firestore Database</em> → <em>Create database</em> → <em>Start in test mode</em>.</p>
+      <p>2. <strong>Cloudinary:</strong> Buka <a href="https://cloudinary.com" target="_blank" rel="noopener">cloudinary.com</a> (daftar via Google) → copy <strong>Cloud name</strong>.</p>
+      <p>3. Di Cloudinary <em>Settings ⚙️</em> → <em>Upload presets</em> → klik <em>Add upload preset</em> → ubah Signing mode ke <strong>Unsigned</strong> → Save.</p>
+      <p>4. Masukkan keduanya ke <code>js/firebase-config.js</code>.</p>
+    </div>
+
+
+    <!-- ======= TABS ======= -->
+    <nav class="upload-tabs" role="tablist">
+      <button class="upload-tab is-active" data-panel="panelMemory" id="tabMemory" role="tab" aria-selected="true">
+        📸 Memory
+      </button>
+      <button class="upload-tab" data-panel="panelGallery" id="tabGallery" role="tab" aria-selected="false">
+        🖼️ Gallery
+      </button>
+      <button class="upload-tab" data-panel="panelVideo" id="tabVideo" role="tab" aria-selected="false">
+        🎬 Video
+      </button>
+    </nav>
+
+    <!-- ======================================================
+         PANEL: MEMORY
+         ====================================================== -->
+    <div class="upload-panel is-active" id="panelMemory" role="tabpanel">
+
+      <div class="form-card">
+        <h2 class="form-card-title">Upload Memory Baru</h2>
+        <p class="form-card-subtitle">Satu foto, satu cerita — yang terlalu berharga untuk hanya disimpan di galeri HP.</p>
+
+        <form id="memoryForm" novalidate>
+
+          <!-- Dropzone foto -->
+          <div class="dropzone" id="memoryDrop" role="button" tabindex="0" aria-label="Klik atau drag foto ke sini">
+            <span class="dropzone-icon">📷</span>
+            <p class="dropzone-label">Drag foto ke sini atau <strong>klik untuk pilih</strong></p>
+            <p class="dropzone-hint">JPG, PNG, atau WEBP &mdash; Maks 10 MB</p>
+            <input type="file" id="memoryFile" accept="image/*" hidden aria-hidden="true" />
+          </div>
+
+          <!-- Preview foto -->
+          <div class="preview-grid" id="memoryPreview"></div>
+
+          <!-- Progress bar -->
+          <div class="progress-wrap" id="memoryProgress">
+            <div class="progress-track">
+              <div class="progress-fill"></div>
+            </div>
+            <span class="progress-label">0%</span>
+          </div>
+
+          <!-- Fields -->
+          <div class="form-row">
+            <div class="form-group" style="margin-bottom:0;">
+              <label class="form-label" for="memoryTitle">Judul Memory *</label>
+              <input type="text" id="memoryTitle" class="form-input"
+                placeholder="cth: Makan Bareng Abis Futsal" required />
+            </div>
+            <div class="form-group" style="margin-bottom:0;">
+              <label class="form-label" for="memoryYear">Tahun *</label>
+              <input type="text" id="memoryYear" class="form-input"
+                placeholder="2025" maxlength="4" required />
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-top:1.2rem;">
+            <label class="form-label" for="memoryStory">Cerita (opsional)</label>
+            <textarea id="memoryStory" class="form-textarea"
+              placeholder="Ceritain momennya singkat… siapa yang ada, lagi ngapain, atau apa yang bikin ingat terus."></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit" id="memorySubmit">Simpan Memory</button>
+        </form>
+      </div>
+
+      <!-- Existing memories -->
+      <div class="section-divider">
+        <span class="section-divider-label">Memory yang sudah ada</span>
+      </div>
+      <div class="existing-grid" id="existingMemories">
+        <p class="status-text">Memuat…</p>
+      </div>
+    </div>
+
+    <!-- ======================================================
+         PANEL: GALLERY
+         ====================================================== -->
+    <div class="upload-panel" id="panelGallery" role="tabpanel">
+
+      <div class="form-card">
+        <h2 class="form-card-title">Upload Foto ke Gallery</h2>
+        <p class="form-card-subtitle">Bisa upload banyak foto sekaligus. Cocok buat foto-foto candid yang gak punya cerita panjang.</p>
+
+        <form id="galleryForm" novalidate>
+
+          <div class="dropzone" id="galleryDrop" role="button" tabindex="0" aria-label="Klik atau drag foto ke sini">
+            <span class="dropzone-icon">🖼️</span>
+            <p class="dropzone-label">Drag foto ke sini atau <strong>klik untuk pilih</strong></p>
+            <p class="dropzone-hint">Bisa pilih banyak sekaligus &mdash; JPG, PNG, WEBP</p>
+            <input type="file" id="galleryFile" accept="image/*" multiple hidden aria-hidden="true" />
+          </div>
+
+          <div class="preview-grid" id="galleryPreview"></div>
+
+          <div class="progress-wrap" id="galleryProgress">
+            <div class="progress-track">
+              <div class="progress-fill"></div>
+            </div>
+            <span class="progress-label">0%</span>
+          </div>
+
+          <button type="submit" class="btn-submit" id="gallerySubmit">Simpan ke Gallery</button>
+        </form>
+      </div>
+
+      <div class="section-divider">
+        <span class="section-divider-label">Foto gallery yang sudah ada</span>
+      </div>
+      <div class="existing-grid" id="existingGallery">
+        <p class="status-text">Memuat…</p>
+      </div>
+    </div>
+
+    <!-- ======================================================
+         PANEL: VIDEO
+         ====================================================== -->
+    <div class="upload-panel" id="panelVideo" role="tabpanel">
+
+      <div class="form-card">
+        <h2 class="form-card-title">Upload Video Kenangan</h2>
+        <p class="form-card-subtitle">Kompres video sebelum upload supaya lebih cepat. MP4 paling kompatibel.</p>
+
+        <form id="videoForm" novalidate>
+
+          <!-- Video + Poster dropzone side by side -->
+          <div class="dropzone-pair">
+            <div>
+              <p class="dropzone-pair-label">File Video *</p>
+              <div class="dropzone" id="videoDrop" role="button" tabindex="0" aria-label="Klik atau drag video ke sini">
+                <span class="dropzone-icon">🎬</span>
+                <p class="dropzone-label">Drag video atau <strong>klik pilih</strong></p>
+                <p class="dropzone-hint">MP4 atau WEBM</p>
+                <input type="file" id="videoFile" accept="video/*" hidden aria-hidden="true" />
+              </div>
+              <div class="preview-grid" id="videoPreview"></div>
+            </div>
+
+            <div>
+              <p class="dropzone-pair-label">Foto Thumbnail / Poster *</p>
+              <div class="dropzone" id="posterDrop" role="button" tabindex="0" aria-label="Klik atau drag poster ke sini">
+                <span class="dropzone-icon">🖼️</span>
+                <p class="dropzone-label">Drag foto atau <strong>klik pilih</strong></p>
+                <p class="dropzone-hint">JPG atau PNG</p>
+                <input type="file" id="posterFile" accept="image/*" hidden aria-hidden="true" />
+              </div>
+              <div class="preview-grid" id="posterPreview"></div>
+            </div>
+          </div>
+
+          <!-- Progress bar video -->
+          <div class="progress-wrap" id="videoProgress">
+            <div class="progress-track">
+              <div class="progress-fill"></div>
+            </div>
+            <span class="progress-label">0%</span>
+          </div>
+
+          <!-- Fields -->
+          <div class="form-row">
+            <div class="form-group" style="margin-bottom:0;">
+              <label class="form-label" for="videoTitle">Judul Video *</label>
+              <input type="text" id="videoTitle" class="form-input"
+                placeholder="cth: Ngobrol Malem di Teras" required />
+            </div>
+            <div class="form-group" style="margin-bottom:0;">
+              <label class="form-label" for="videoYear">Tahun *</label>
+              <input type="text" id="videoYear" class="form-input"
+                placeholder="2025" maxlength="4" required />
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-top:1.2rem;">
+            <label class="form-label" for="videoSynopsis">Sinopsis (opsional)</label>
+            <textarea id="videoSynopsis" class="form-textarea"
+              placeholder="Ceritain isi videonya singkat…"></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit" id="videoSubmit">Simpan Video</button>
+        </form>
+      </div>
+
+      <div class="section-divider">
+        <span class="section-divider-label">Video yang sudah ada</span>
+      </div>
+      <div class="existing-grid" id="existingVideos">
+        <p class="status-text">Memuat…</p>
+      </div>
+    </div><!-- /panelVideo -->
+
+  </div><!-- /upload-container -->
+</div><!-- /upload-page -->
+
+<!-- ======= MODAL: EDIT ITEM ======= -->
+<div class="edit-modal" id="editModal" aria-hidden="true">
+
+
+  <div class="edit-modal-backdrop" id="editModalBackdrop"></div>
+  <div class="edit-modal-content">
+    <button class="modal-close" id="editModalClose" aria-label="Tutup">&times;</button>
+    <h2 class="edit-modal-title">Edit Konten</h2>
+    <form id="editForm" class="edit-form">
+      <input type="hidden" id="editId" />
+      <input type="hidden" id="editCollection" />
+
+      <div class="edit-preview-wrap">
+        <img id="editThumb" class="edit-thumb" src="" alt="Thumbnail" />
+      </div>
+
+      <div class="form-group" id="editTitleGroup">
+        <label class="form-label" for="editTitle">Judul</label>
+        <input type="text" id="editTitle" class="form-input" placeholder="Judul kenangan" />
+      </div>
+
+      <div class="form-group" id="editYearGroup">
+        <label class="form-label" for="editYear">Tahun</label>
+        <input type="text" id="editYear" class="form-input" placeholder="2025" maxlength="4" />
+      </div>
+
+      <div class="form-group" id="editStoryGroup">
+        <label class="form-label" for="editStory">Cerita / Deskripsi</label>
+        <textarea id="editStory" class="form-textarea" rows="3" placeholder="Ceritakan kenangannya…"></textarea>
+      </div>
+
+      <div class="edit-modal-actions">
+        <button type="button" class="btn-cancel" id="editCancelBtn">Batal</button>
+        <button type="submit" class="btn-submit" id="editSaveBtn">Simpan Perubahan</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ======= Firebase SDK (CDN) ======= -->
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/upload.js"></script>
+
+</body>
+</html>

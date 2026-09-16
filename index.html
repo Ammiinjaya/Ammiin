@@ -9,7 +9,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Karla:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="css/style.css" />
 </head>
@@ -20,15 +20,16 @@
 <!-- ======= NAVIGATION ======= -->
 <header class="site-nav" id="siteNav">
   <div class="nav-inner">
-    <a href="#hero" class="nav-brand">AMMIIN</a>
+    <a href="#home" class="nav-brand">AMMIIN</a>
 
     <nav class="nav-links" id="navLinks">
-      <a href="#hero" class="nav-link">Home</a>
+      <a href="#home" class="nav-link">Home</a>
       <a href="#story" class="nav-link">Story</a>
       <a href="#memories" class="nav-link">Memories</a>
       <a href="#people" class="nav-link">People</a>
       <a href="#videos" class="nav-link">Video</a>
       <a href="#gallery" class="nav-link">Gallery</a>
+      <a href="upload.html" class="nav-link nav-link--upload">Upload ↑</a>
     </nav>
 
     <button class="nav-toggle" id="navToggle" aria-label="Buka menu" aria-expanded="false">
@@ -52,9 +53,9 @@
       <p class="hero-kicker">Perkumpulan Remaja</p>
       <h1 class="hero-title">AMMIIN</h1>
       <p class="hero-subtitle">Sebuah perkumpulan remaja baik, dengan cerita yang tidak akan selesai hanya dalam satu halaman.</p>
-      <a href="#intro" class="hero-cta" id="heroCta">
+      <a href="#memories" class="hero-cta" id="heroCta">
         <span>Mulai Perjalanan</span>
-        <span class="hero-cta-arrow">↓</span>
+        <span class="hero-cta-arrow">→</span>
       </a>
     </div>
   </section>
@@ -209,8 +210,16 @@
     <button class="modal-close" id="lightboxClose" aria-label="Tutup">&times;</button>
     <img src="" alt="" class="lightbox-img" id="lightboxImg" />
     <div class="lightbox-caption" id="lightboxCaption">
-      <p class="lightbox-date" id="lightboxDate"></p>
-      <h3 class="lightbox-title" id="lightboxTitle"></h3>
+      <div class="lightbox-header-row">
+        <div>
+          <p class="lightbox-date" id="lightboxDate"></p>
+          <h3 class="lightbox-title" id="lightboxTitle"></h3>
+        </div>
+        <div class="modal-actions" id="lightboxActions">
+          <button type="button" class="btn-action btn-action--edit" id="lightboxEditBtn" title="Edit kenangan ini">✏️ Edit</button>
+          <button type="button" class="btn-action btn-action--delete" id="lightboxDeleteBtn" title="Hapus kenangan ini">🗑️ Hapus</button>
+        </div>
+      </div>
       <p class="lightbox-story" id="lightboxStory"></p>
     </div>
   </div>
@@ -244,8 +253,16 @@
       </video>
     </div>
     <div class="video-modal-caption">
-      <p class="video-modal-date" id="videoModalDate"></p>
-      <h3 class="video-modal-title" id="videoModalTitle"></h3>
+      <div class="video-modal-header-row">
+        <div>
+          <p class="video-modal-date" id="videoModalDate"></p>
+          <h3 class="video-modal-title" id="videoModalTitle"></h3>
+        </div>
+        <div class="modal-actions" id="videoModalActions">
+          <button type="button" class="btn-action btn-action--edit" id="videoModalEditBtn" title="Edit video ini">✏️ Edit</button>
+          <button type="button" class="btn-action btn-action--delete" id="videoModalDeleteBtn" title="Hapus video ini">🗑️ Hapus</button>
+        </div>
+      </div>
       <p class="video-modal-story" id="videoModalStory"></p>
       <p class="video-modal-fallback" id="videoModalFallback" hidden>
         Video tidak bisa diputar langsung di sini.
@@ -255,6 +272,46 @@
   </div>
 </div>
 
+<!-- ======= MODAL: UNIVERSAL EDIT ======= -->
+<div class="site-edit-modal" id="siteEditModal" aria-hidden="true">
+  <div class="lightbox-backdrop" id="siteEditModalBackdrop"></div>
+  <div class="site-edit-content">
+    <button class="modal-close" id="siteEditModalClose" aria-label="Tutup">&times;</button>
+    <h2 class="site-edit-title">Edit Konten</h2>
+    <form id="siteEditForm" class="site-edit-form">
+      <input type="hidden" id="siteEditId" />
+      <input type="hidden" id="siteEditCollection" />
+      <input type="hidden" id="siteEditType" />
+
+      <div class="form-group" id="siteEditTitleGroup">
+        <label class="form-label" for="siteEditTitle">Judul</label>
+        <input type="text" id="siteEditTitle" class="form-input" placeholder="Judul kenangan" />
+      </div>
+
+      <div class="form-group" id="siteEditYearGroup">
+        <label class="form-label" for="siteEditYear">Tahun</label>
+        <input type="text" id="siteEditYear" class="form-input" placeholder="2025" maxlength="4" />
+      </div>
+
+      <div class="form-group" id="siteEditStoryGroup">
+        <label class="form-label" for="siteEditStory">Cerita / Deskripsi</label>
+        <textarea id="siteEditStory" class="form-textarea" rows="4" placeholder="Ceritakan momen ini…"></textarea>
+      </div>
+
+      <div class="site-edit-actions">
+        <button type="button" class="btn-cancel" id="siteEditCancelBtn">Batal</button>
+        <button type="submit" class="btn-submit" id="siteEditSaveBtn">Simpan Perubahan</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+<script src="js/firebase-config.js"></script>
 <script src="js/script.js"></script>
 </body>
 </html>
