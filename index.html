@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AMMIIN — Sebuah Perjalanan Kenangan</title>
+<meta name="description" content="AMMIIN adalah sebuah perkumpulan remaja dengan cerita, kebersamaan, dan kenangan yang tidak pernah selesai." />
+<link rel="icon" type="image/png" href="favicon.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Karla:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div class="grain-overlay" aria-hidden="true"></div>
+
+<!-- ======= NAVIGATION ======= -->
+<header class="site-nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-brand">AMMIIN</a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#hero" class="nav-link">Home</a>
+      <a href="#story" class="nav-link">Story</a>
+      <a href="#memories" class="nav-link">Memories</a>
+      <a href="#people" class="nav-link">People</a>
+      <a href="#videos" class="nav-link">Video</a>
+      <a href="#gallery" class="nav-link">Gallery</a>
+    </nav>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Buka menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ======= 1. HERO ======= -->
+  <section class="hero" id="hero">
+    <div class="hero-media">
+      <img src="images/hero.jpg" alt="" class="hero-img" />
+      <div class="hero-overlay"></div>
+    </div>
+
+    <div class="hero-content reveal-on-load">
+      <p class="hero-kicker">Perkumpulan Remaja</p>
+      <h1 class="hero-title">AMMIIN</h1>
+      <p class="hero-subtitle">Sebuah perkumpulan remaja baik, dengan cerita yang tidak akan selesai hanya dalam satu halaman.</p>
+      <a href="#intro" class="hero-cta" id="heroCta">
+        <span>Mulai Perjalanan</span>
+        <span class="hero-cta-arrow">↓</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ======= 2. INTRODUCTION ======= -->
+  <section class="intro" id="intro">
+    <div class="container">
+      <p class="intro-text scroll-reveal">
+        AMMIIN bukan hanya tentang siapa saja yang ada di dalamnya.
+        AMMIIN adalah tentang waktu yang pernah kita habiskan bersama,
+        tawa yang pernah terdengar, dan cerita yang perlahan
+        <em>menjadi kenangan.</em>
+      </p>
+    </div>
+  </section>
+
+  <!-- ======= 3. MEMORIES ======= -->
+  <section class="memories" id="memories">
+    <div class="container">
+      <div class="section-head scroll-reveal">
+        <h2 class="section-title">Our Memories</h2>
+        <p class="section-subtitle">Beberapa momen terlalu berharga untuk hanya disimpan di galeri.</p>
+      </div>
+
+      <div class="memory-grid" id="memoryGrid">
+        <!-- Memory cards digenerate lewat JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= 4. STORY / TIMELINE ======= -->
+  <section class="story" id="story">
+    <div class="container">
+      <div class="section-head scroll-reveal">
+        <h2 class="section-title">The Story So Far</h2>
+        <p class="section-subtitle">Perjalanan AMMIIN dari waktu ke waktu.</p>
+      </div>
+
+      <div class="timeline" id="timeline">
+        <div class="timeline-line" aria-hidden="true"></div>
+
+        <div class="timeline-item scroll-reveal">
+          <span class="timeline-year">2023</span>
+          <h3 class="timeline-title">Where It Started</h3>
+          <p class="timeline-text">Sebuah kelompok kecil yang bertemu tanpa rencana besar, hanya ingin menghabiskan waktu bersama.</p>
+        </div>
+
+        <div class="timeline-item scroll-reveal">
+          <span class="timeline-year">2024</span>
+          <h3 class="timeline-title">More Stories</h3>
+          <p class="timeline-text">Lebih banyak wajah, lebih banyak cerita, dan lebih banyak alasan untuk terus berkumpul.</p>
+        </div>
+
+        <div class="timeline-item scroll-reveal">
+          <span class="timeline-year">2025</span>
+          <h3 class="timeline-title">Growing Together</h3>
+          <p class="timeline-text">Kami tumbuh, berubah, dan belajar — tetapi kebersamaan ini tetap menjadi rumah.</p>
+        </div>
+
+        <div class="timeline-item scroll-reveal">
+          <span class="timeline-year">2026</span>
+          <h3 class="timeline-title">Still Here</h3>
+          <p class="timeline-text">Cerita ini masih berjalan, dan kami masih di sini, bersama.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= 5. TRANSITION ======= -->
+  <section class="transition-section" id="transition">
+    <div class="container">
+      <p class="transition-line scroll-reveal">And behind every memory...</p>
+      <p class="transition-line transition-line--emphasis scroll-reveal">there are people who made it meaningful.</p>
+    </div>
+  </section>
+
+  <!-- ======= 6. PEOPLE ======= -->
+  <section class="people" id="people">
+    <div class="container">
+      <div class="section-head scroll-reveal">
+        <h2 class="section-title">Meet the People</h2>
+        <p class="section-subtitle">Orang-orang di balik cerita AMMIIN.</p>
+      </div>
+
+      <div class="member-grid" id="memberGrid">
+        <!-- Member cards digenerate lewat JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= 7. VIDEO KENANGAN ======= -->
+  <section class="video-memories" id="videos">
+    <div class="container">
+      <div class="section-head scroll-reveal">
+        <h2 class="section-title">Video Kenangan</h2>
+        <p class="section-subtitle">Beberapa momen lebih pantas ditonton daripada hanya diceritakan.</p>
+      </div>
+
+      <div class="video-gate scroll-reveal" id="videoGate">
+        <img src="images/vidio2-poster.jpg" alt="" class="video-gate-bg" />
+        <div class="video-gate-scrim"></div>
+        <button class="video-gate-btn" id="videoGateBtn">
+          <span class="video-gate-icon">▶</span>
+          <span>Putar Kenangan</span>
+        </button>
+      </div>
+
+      <div class="video-grid" id="videoGrid"></div>
+    </div>
+  </section>
+
+  <!-- ======= 8. GALLERY ======= -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="section-head scroll-reveal">
+        <h2 class="section-title">More Memories</h2>
+        <p class="section-subtitle">Sisa-sisa momen yang masih menempel di kepala.</p>
+      </div>
+
+      <div class="gallery-grid" id="galleryGrid">
+        <!-- Gallery images digenerate lewat JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= 9. CLOSING ======= -->
+  <section class="closing" id="closing">
+    <div class="container">
+      <p class="closing-line scroll-reveal">One group.</p>
+      <p class="closing-line scroll-reveal">Countless memories.</p>
+      <p class="closing-line scroll-reveal">One story.</p>
+      <h2 class="closing-brand scroll-reveal">AMMIIN</h2>
+      <p class="closing-note scroll-reveal">Cerita ini mungkin terus berubah, tetapi kenangannya akan selalu menjadi bagian dari perjalanan kita.</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ======= 10. FOOTER ======= -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p class="footer-brand">AMMIIN</p>
+    <p class="footer-tagline">Made with memories.</p>
+    <p class="footer-year">© <span id="footerYear">2026</span> AMMIIN</p>
+  </div>
+</footer>
+
+<!-- ======= MODAL: MEMORY / GALLERY LIGHTBOX ======= -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+  <div class="lightbox-content">
+    <button class="modal-close" id="lightboxClose" aria-label="Tutup">&times;</button>
+    <img src="" alt="" class="lightbox-img" id="lightboxImg" />
+    <div class="lightbox-caption" id="lightboxCaption">
+      <p class="lightbox-date" id="lightboxDate"></p>
+      <h3 class="lightbox-title" id="lightboxTitle"></h3>
+      <p class="lightbox-story" id="lightboxStory"></p>
+    </div>
+  </div>
+</div>
+
+<!-- ======= MODAL: MEMBER DETAIL ======= -->
+<div class="member-modal" id="memberModal" aria-hidden="true">
+  <div class="lightbox-backdrop" id="memberModalBackdrop"></div>
+  <div class="member-modal-content">
+    <button class="modal-close" id="memberModalClose" aria-label="Tutup">&times;</button>
+    <div class="member-modal-media">
+      <img src="" alt="" class="member-modal-img" id="memberModalImg" />
+    </div>
+    <div class="member-modal-info">
+      <p class="member-modal-role" id="memberModalRole"></p>
+      <h3 class="member-modal-name" id="memberModalName"></h3>
+      <p class="member-modal-quote" id="memberModalQuote"></p>
+      <p class="member-modal-desc" id="memberModalDesc"></p>
+    </div>
+  </div>
+</div>
+
+<!-- ======= MODAL: VIDEO PLAYER ======= -->
+<div class="video-modal" id="videoModal" aria-hidden="true">
+  <div class="lightbox-backdrop" id="videoModalBackdrop"></div>
+  <div class="video-modal-content">
+    <button class="modal-close" id="videoModalClose" aria-label="Tutup">&times;</button>
+    <div class="video-modal-player">
+      <video id="videoModalPlayer" controls playsinline webkit-playsinline preload="metadata">
+        <source id="videoModalSource" src="" type="video/mp4" />
+      </video>
+    </div>
+    <div class="video-modal-caption">
+      <p class="video-modal-date" id="videoModalDate"></p>
+      <h3 class="video-modal-title" id="videoModalTitle"></h3>
+      <p class="video-modal-story" id="videoModalStory"></p>
+      <p class="video-modal-fallback" id="videoModalFallback" hidden>
+        Video tidak bisa diputar langsung di sini.
+        <a id="videoModalFallbackLink" href="#" target="_blank" rel="noopener">Buka video di tab baru</a>.
+      </p>
+    </div>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
