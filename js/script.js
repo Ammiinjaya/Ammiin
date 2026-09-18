@@ -58,7 +58,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const members = [
     { name: "Ageng",  role: "Member of AMMIIN", image: "images/member-01.jpg", quote: "Some memories are worth keeping forever.", desc: "Lengkapi deskripsi singkat tentang Ageng di sini." },
     { name: "April",  role: "Member of AMMIIN", image: "images/member-02.jpg", quote: "Together, always.",                        desc: "Lengkapi deskripsi singkat tentang April di sini." },
-    { name: "Geri",   role: "Member of AMMIIN", image: "images/member-03.jpg", quote: "Every story needs its people.",             desc: "Lengkapi deskripsi singkat tentang Geri di sini." },
     { name: "Indra",  role: "Member of AMMIIN", image: "images/member-04.jpg", quote: "We're better when we're together.",         desc: "Lengkapi deskripsi singkat tentang Indra di sini." },
     { name: "Mek",    role: "Member of AMMIIN", image: "images/member-05.jpg", quote: "This is just the beginning.",               desc: "Lengkapi deskripsi singkat tentang Mek di sini." },
     { name: "Sikibb", role: "Member of AMMIIN", image: "images/member-06.jpg", quote: "Small moments, big memories.",              desc: "Lengkapi deskripsi singkat tentang Sikibb di sini." },
