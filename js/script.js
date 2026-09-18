@@ -63,7 +63,10 @@ document.addEventListener("DOMContentLoaded", () => {
     { name: "Sikibb", role: "Member of AMMIIN", image: "images/member-06.jpg", quote: "Small moments, big memories.",              desc: "Lengkapi deskripsi singkat tentang Sikibb di sini." },
     { name: "Thariq", role: "Member of AMMIIN", image: "images/member-07.jpg", quote: "I'm always here.",                          desc: "Lengkapi deskripsi singkat tentang Thariq di sini." },
     { name: "Umar",   role: "Member of AMMIIN", image: "images/member-08.jpg", quote: "Let's just go, we'll figure it out.",       desc: "Lengkapi deskripsi singkat tentang Umar di sini." },
-    { name: "Wendi",  role: "Member of AMMIIN", image: "images/member-09.jpg", quote: "One group, one story.",                     desc: "Lengkapi deskripsi singkat tentang Wendi di sini." }
+    { name: "Wendi",  role: "Member of AMMIIN", image: "images/member-09.jpg", quote: "One group, one story.",                     desc: "Lengkapi deskripsi singkat tentang Wendi di sini." },
+    { name: "Banu",   role: "Member of AMMIIN", image: "images/member-10.jpg", quote: "Life is better with the right people.",       desc: "Lengkapi deskripsi singkat tentang Banu di sini." },
+    { name: "Azka",   role: "Member of AMMIIN", image: "images/member-11.jpg", quote: "Show up, and make it count.",                 desc: "Lengkapi deskripsi singkat tentang Azka di sini." },
+    { name: "Izra",   role: "Member of AMMIIN", image: "images/member-12.jpg", quote: "Good vibes only.",                           desc: "Lengkapi deskripsi singkat tentang Izra di sini." }
   ];
 
   /* ===================================================
